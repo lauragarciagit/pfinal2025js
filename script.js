@@ -44,13 +44,23 @@ btnEnviar.addEventListener("click", () => {
 // Guardar jugador en localStorage
 botonGuardar.addEventListener("click", () => {
   localStorage.setItem("jugador", JSON.stringify(jugador));
-  alert("Datos guardados correctamente.");
+  //alert("Datos guardados correctamente."); se reemplaza con sweetalert//
+  Swal.fire({
+    icon: 'success',
+    title: '¡Listo!',
+    text: 'Datos guardados correctamente.'
+  });
 });
 
 // Eliminar jugador
 botonEliminar.addEventListener("click", () => {
   localStorage.removeItem("jugador");
-  alert("Datos eliminados.");
+  //alert("Datos eliminados."); se reemplaza con sweetalert//
+  Swal.fire({
+    icon: 'info',
+    title: '¡Dato eliminado!',
+    text: 'Se ha borrado el nombre del jugador.'
+  });
 });
 
 // Cargar preguntas dinámicamente. Se crea una función "iniciar trivia"//
