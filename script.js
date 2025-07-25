@@ -4,13 +4,14 @@ const btnEnviar = document.getElementById("btnEnviar");
 const mensaje = document.getElementById("mensaje");
 const botonGuardar = document.getElementById("guardarNombre");
 const botonEliminar = document.getElementById("eliminarNombre");
-
+const botonReiniciar = document.getElementById("reiniciarTrivia");
 const contenedorCards = document.querySelector(".cards");
+
 let puntos = 0;
 let preguntasRespondidas = 0;
-let preguntasCargadas = []; 
+let preguntasCargadas = []; // variable para las preguntas
 
-//preguntas de la trivia desde el json//
+//preguntas de la trivia desde el json
 fetch("preguntas.json")
   .then((respuesta) => respuesta.json())
   .then((data) => {
@@ -161,3 +162,28 @@ function manejarRespuesta(boton, card, esCorrecta) {
   // Actualizar puntaje en pantalla
   document.getElementById("puntuacion").textContent = puntos;
 }
+
+// Botón reiniciar trivia
+botonReiniciar.addEventListener("click", () => {
+  // Resetea variables
+  puntos = 0;
+  preguntasRespondidas = 0;
+  jugador.puntaje = 0;
+  jugador.respuestas = [];
+  jugador.ganoEntradas = false;
+
+  // Limpia DOM
+  contenedorCards.innerHTML = "";
+  document.getElementById("puntosGanador").textContent = "";
+  document.getElementById("puntuacion").textContent = puntos;
+
+  // Vuelve a cargar preguntas
+  iniciarTrivia(preguntasCargadas);
+
+  // Uso de SweetAlert
+  Swal.fire({
+    icon: 'info',
+    title: 'Trivia reiniciada',
+    text: '¡Podés volver a jugar!'
+  });
+});

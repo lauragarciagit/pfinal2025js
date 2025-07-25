@@ -35,7 +35,7 @@ input[type="text"] {
 }
 
 button {
-  padding: 10px 15px;
+  padding: 15px 15px;
   background-color: #673ab7;
   color: white;
   border: none;
@@ -50,13 +50,13 @@ button:hover {
 
 .puntaje {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: bold;
   color: #333;
 }
 
 .instrucciones {
-  font-size: 0.9rem;
+  font-size: 20px;
   color: #555;
   margin-bottom: 10px;
 }
