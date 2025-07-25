@@ -1,8 +1,8 @@
-# proyecto-final-js
+# pfinal2025js
 Bienvenidos/as a mi proyecto Luces, preguntas ... Acción!!
 
 Autor
-Laura F. García
+Laura Fernanda. García
 
 Descripción:
 Es un simulador, una trivia de preguntas y respuestas referidas al teatro.
