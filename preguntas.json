@@ -1,0 +1,66 @@
+[
+  {
+    "texto": "¿Quién escribió El conventillo de la Paloma?",
+    "opciones": [
+      { "texto": "Federico García Lorca", "correcto": false },
+      { "texto": "Alberto Vaccarezza", "correcto": true },
+      { "texto": "Roberto Cossa", "correcto": false }
+    ]
+  },
+  {
+    "texto": "¿A qué género pertenece Esperando a Godot?",
+    "opciones": [
+      { "texto": "Teatro del absurdo", "correcto": true },
+      { "texto": "Teatro épico", "correcto": false },
+      { "texto": "Comedia musical", "correcto": false }
+    ]
+  },
+  {
+    "texto": "¿Qué autor argentino escribió La Nona?",
+    "opciones": [
+      { "texto": "Tito Lusiardo", "correcto": false },
+      { "texto": "Carlos Gorostiza", "correcto": false },
+      { "texto": "Roberto Cossa", "correcto": true }
+    ]
+  },
+  {
+    "texto": "¿Quién ganó el Martín Fierro Teatro de oro 2025?",
+    "opciones": [
+      { "texto": "Julio Chávez", "correcto": false },
+      { "texto": "Nicolás Vázquez", "correcto": false },
+      { "texto": "Gabriel Goity", "correcto": true }
+    ]
+  },
+  {
+    "texto": "¿Qué personaje dice la frase “Ser o no ser, esa es la cuestión”?",
+    "opciones": [
+      { "texto": "Macbeth", "correcto": false },
+      { "texto": "Hamlet", "correcto": true },
+      { "texto": "Otel·lo", "correcto": false }
+    ]
+  },
+  {
+    "texto": "¿Cuál de estas obras fue escrita por Tenessee Williams?",
+    "opciones": [
+      { "texto": "Un tranvía llamado libertad", "correcto": false },
+      { "texto": "Un tranvía llamado deseo", "correcto": true },
+      { "texto": "La gata sobre el tejado de zinc caliente", "correcto": false }
+    ]
+  },
+  {
+    "texto": "¿Qué obra fue escrita por Arthur Miller?",
+    "opciones": [
+      { "texto": "La muerte de un viajante", "correcto": true },
+      { "texto": "La gaviota", "correcto": false },
+      { "texto": "Esperando a Godot", "correcto": false }
+    ]
+  },
+  {
+    "texto": "¿Quién escribió El zoo de cristal?",
+    "opciones": [
+      { "texto": "Edward Albee", "correcto": false },
+      { "texto": "Tennessee Williams", "correcto": true },
+      { "texto": "Sam Shepard", "correcto": false }
+    ]
+  }
+]

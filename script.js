@@ -9,6 +9,17 @@ const contenedorCards = document.querySelector(".cards");
 let puntos = 0;
 let preguntasRespondidas = 0;
 
+//preguntas de la trivia desde el json//
+fetch("preguntas.json")
+  .then((respuesta) => respuesta.json())
+  .then((data) => {
+    iniciarTrivia(data); // función que carga las preguntas en pantalla
+  })
+  .catch((error) => {
+    console.error("Error al cargar las preguntas:", error);
+  });
+
+
 // Objeto jugador
 const jugador = {
   nombre: "",
@@ -17,73 +28,7 @@ const jugador = {
   ganoEntradas: false
 };
 
-// Array de preguntas
-const preguntas = [
-  {
-    texto: "¿Quién escribió El conventillo de la Paloma?",
-    opciones: [
-      { texto: "Federico García Lorca", correcto: false },
-      { texto: "Alberto Vaccarezza", correcto: true },
-      { texto: "Roberto Cossa", correcto: false }
-    ]
-  },
-  {
-    texto: "¿A qué género pertenece Esperando a Godot?",
-    opciones: [
-      { texto: "Teatro del absurdo", correcto: true },
-      { texto: "Teatro épico", correcto: false },
-      { texto: "Comedia musical", correcto: false }
-    ]
-  },
-  {
-    texto: "¿Qué autor argentino escribió La Nona?",
-    opciones: [
-      { texto: "Tito Lusiardo", correcto: false },
-      { texto: "Carlos Gorostiza", correcto: false },
-      { texto: "Roberto Cossa", correcto: true }
-    ]
-  },
-  {
-    texto: "¿Quién ganó el Martín Fierro Teatro de oro 2025?",
-    opciones: [
-      { texto: "Julio Chávez", correcto: false },
-      { texto: "Nicolás Vázquez", correcto: false },
-      { texto: "Gabriel Goity", correcto: true }
-    ]
-  },
-  {
-    texto: "¿Qué personaje dice la frase “Ser o no ser, esa es la cuestión”?",
-    opciones: [
-      { texto: "Macbeth", correcto: false },
-      { texto: "Hamlet", correcto: true },
-      { texto: "Otel·lo", correcto: false }
-    ]
-  },
-  {
-    texto: "¿Cuál de estas obras fue escrita por Tenessee Williams?",
-    opciones: [
-      { texto: "Un tranvía llamado libertad", correcto: false },
-      { texto: "Un tranvía llamado deseo", correcto: true },
-      { texto: "La gata sobre el tejado de zinc caliente", correcto: false }
-    ]
-  },
-  {
-    texto: "¿Qué obra fue escrita por Arthur Miller?",
-    opciones: [
-      { texto: "La muerte de un viajante", correcto: true },
-      { texto: "La gaviota", correcto: false },
-      { texto: "Esperando a Godot", correcto: false }
-    ]
-  },
-  {
-    texto: "¿Quién escribió El zoo de cristal?",
-    opciones: [
-      { texto: "Edward Albee", correcto: false },
-      { texto: "Tennessee Williams", correcto: true },
-      { texto: "Sam Shepard", correcto: false }
-    ]
-  }
-];
+// array de preguntas se generó un json aparte para un código más limpio//
 
 // Cargar nombre
 btnEnviar.addEventListener("click", () => {
@@ -108,40 +53,43 @@ botonEliminar.addEventListener("click", () => {
   alert("Datos eliminados.");
 });
 
-// Cargar preguntas dinámicamente
-preguntas.forEach((preguntaObj, index) => {
-  const card = document.createElement("div");
-  card.className = "card";
+// Cargar preguntas dinámicamente. Se crea una función "iniciar trivia"//
+function iniciarTrivia(preguntas) {
+  preguntas.forEach((preguntaObj, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-  const pregunta = document.createElement("p");
-  pregunta.className = "pregunta";
-  pregunta.textContent = preguntaObj.texto;
+    const pregunta = document.createElement("p");
+    pregunta.className = "pregunta";
+    pregunta.textContent = preguntaObj.texto;
 
-  const opciones = document.createElement("div");
-  opciones.className = "opciones";
+    const opciones = document.createElement("div");
+    opciones.className = "opciones";
 
-  preguntaObj.opciones.forEach((opcion) => {
-    const boton = document.createElement("button");
-    boton.className = "btn";
-    boton.textContent = opcion.texto;
-    boton.dataset.correcto = opcion.correcto;
+    preguntaObj.opciones.forEach((opcion) => {
+      const boton = document.createElement("button");
+      boton.className = "btn";
+      boton.textContent = opcion.texto;
+      boton.dataset.correcto = opcion.correcto;
 
-    boton.addEventListener("click", () => {
-      manejarRespuesta(boton, card, opcion.correcto);
+      boton.addEventListener("click", () => {
+        manejarRespuesta(boton, card, opcion.correcto);
+      });
+
+      opciones.appendChild(boton);
     });
 
-    opciones.appendChild(boton);
+    const respuesta = document.createElement("div");
+    respuesta.className = "respuesta";
+
+    card.appendChild(pregunta);
+    card.appendChild(opciones);
+    card.appendChild(respuesta);
+
+    contenedorCards.appendChild(card);
   });
+}
 
-  const respuesta = document.createElement("div");
-  respuesta.className = "respuesta";
-
-  card.appendChild(pregunta);
-  card.appendChild(opciones);
-  card.appendChild(respuesta);
-
-  contenedorCards.appendChild(card);
-});
 
 // Función que maneja la respuesta
 function manejarRespuesta(boton, card, esCorrecta) {
