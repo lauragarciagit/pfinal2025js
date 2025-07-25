@@ -1,1 +1,1 @@
-# pfinal2025js
+# proyecto-final-js
