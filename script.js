@@ -37,7 +37,12 @@ btnEnviar.addEventListener("click", () => {
     jugador.nombre = nuevoTexto;
     mensaje.textContent = `¡Hola, ${nuevoTexto}! Bienvenido/a a la trivia.`;
   } else {
-    mensaje.textContent = "Debes ingresar un texto válido.";
+    //mensaje.textContent = "Debes ingresar un texto válido."; se reemplaza con sweetalert//
+    Swal.fire({
+      icon: 'warning',
+      title: 'Campo vacío',
+      text: 'Debes ingresar un texto válido.'
+      });
   }
 });
 
