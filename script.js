@@ -48,7 +48,8 @@ btnEnviar.addEventListener("click", () => {
   }
 });
 
-// Guardar jugador en localStorage
+// Guardar jugador en localStorage. Se aclara que es para GUARDAR NOMBRE Y PUNTAJE.
+//Se presionando el "botón" nuevamente al obtener los puntos totales.
 botonGuardar.addEventListener("click", () => {
   localStorage.setItem("jugador", JSON.stringify(jugador));
   //alert("Datos guardados correctamente."); se reemplaza con sweetalert//
