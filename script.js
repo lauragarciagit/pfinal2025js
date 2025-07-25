@@ -4,21 +4,22 @@ const btnEnviar = document.getElementById("btnEnviar");
 const mensaje = document.getElementById("mensaje");
 const botonGuardar = document.getElementById("guardarNombre");
 const botonEliminar = document.getElementById("eliminarNombre");
-const botonGuardarPuntaje = document.getElementById("GuardarPuntaje");
+
 const contenedorCards = document.querySelector(".cards");
 let puntos = 0;
 let preguntasRespondidas = 0;
+let preguntasCargadas = []; 
 
 //preguntas de la trivia desde el json//
 fetch("preguntas.json")
   .then((respuesta) => respuesta.json())
   .then((data) => {
+    preguntasCargadas = data;  
     iniciarTrivia(data); // función que carga las preguntas en pantalla
   })
   .catch((error) => {
     console.error("Error al cargar las preguntas:", error);
   });
-
 
 // Objeto jugador
 const jugador = {
@@ -137,7 +138,7 @@ function manejarRespuesta(boton, card, esCorrecta) {
   preguntasRespondidas++;
 
   // Mostrar resultado final
-  if (preguntasRespondidas === preguntas.length) {
+  if (preguntasRespondidas === preguntasCargadas.length) {
     const puntosGanador = document.getElementById("puntosGanador");
     if (puntos >= 200) {
       jugador.ganoEntradas = true;
